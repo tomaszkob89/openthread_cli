@@ -47,4 +47,4 @@ manifest:
         path-prefix: ncs
 
   self:
-      path: .
+      path: cli
