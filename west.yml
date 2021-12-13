@@ -25,11 +25,13 @@ manifest:
     # NCS is hosted here
     - name: nrfconnect
       url-base: https://github.com/nrfconnect
+    - name: lmaciejonczyk
+      url-base: https://github.com/lmaciejonczyk
 
   # If not otherwise specified, the projects below should be obtained
   # from the krknwk remote.
   defaults:
-    remote: nrfconnect
+    remote: lmaciejonczyk
 
   # group filter to remove project out of scope
 
@@ -38,7 +40,7 @@ manifest:
   projects:
     - name: ncs
       repo-path: sdk-nrf-next
-      revision: haltium-zephyr
+      revision: per_hex_gen
       path: nrf
       import:
         path-prefix: ncs
