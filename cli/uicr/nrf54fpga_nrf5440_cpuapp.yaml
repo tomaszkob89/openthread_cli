@@ -1,0 +1,215 @@
+#
+# Copyright (c) 2021 Nordic Semiconductor ASA
+#
+# SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
+#
+
+###################################
+# Memory
+###################################
+
+mem_config:
+  - READ: Allowed
+    WRITE: NotAllowed
+    EXECUTE: Allowed
+    SECURE: NotAllowed # Means non-secure is not allowed, i.e. is secure
+    OWNERID: 2
+    ADDRESS: 0x0E054000
+  - READ: Allowed
+    WRITE: Allowed
+    EXECUTE: NotAllowed
+    SECURE: NotAllowed
+    OWNERID: 0
+    ADDRESS: 0x2F000000
+  - READ: Allowed
+    WRITE: Allowed
+    EXECUTE: NotAllowed
+    SECURE: NotAllowed
+    OWNERID: 2
+    ADDRESS: 0x2F080000
+  - READ: Allowed
+    WRITE: Allowed
+    EXECUTE: Allowed
+    SECURE: NotAllowed
+    OWNERID: 2 # app
+    ADDRESS:
+  # GRAM3 for APP
+     - 0x2FC00000
+
+mem_size:
+  - SIZE: 0x56000
+  - SIZE: 0x80000
+  - SIZE: 0x60000
+  - SIZE: 0x8000
+
+
+###################################
+# Peripherals
+###################################
+
+periph_config:
+  - SECATTR: Secure
+    DMASEC: Secure
+    DOMAINID: 2
+    ADDRESS:
+      - UARTE136_S
+
+
+###################################
+# GPIO
+###################################
+
+gpio_own:
+  - Own
+  - Own
+  - Own
+  - Own
+
+###################################
+# GPIOTE
+###################################
+
+gpiote_ch_own:
+  - CH_2: Own
+
+gpiote_ch_secure:
+  - CH_2: NonSecure
+
+
+###################################
+# GRTC
+###################################
+
+grtc_cc_own:
+  CC_0: Own
+  CC_1: Own
+
+grtc_cc_secure:
+  CC_0: NonSecure
+  CC_1: Secure
+
+
+###################################
+# IPCMAP
+###################################
+
+ipcmap:
+  # APP (source) -> SEC (sink)
+  - IPCTCHSOURCE: 0 # Source CH0
+    DOMAINIDSOURCE: 2 # Application
+    IPCTCHSINK: 0 # Sink CH0
+    DOMAINIDSINK: 1 # Secure
+
+
+###################################
+# IPCT (Local)
+###################################
+
+ipct_local_ch_secure:
+  CH_0: NonSecure
+
+ipct_local_interrupt_secure:
+  INT_1: NonSecure
+
+
+###################################
+# IPCT (Global)
+###################################
+
+ipct_global_ch_own:
+  - CH_0: Own
+    CH_1: Own
+    CH_2: Own
+    CH_3: Own
+  - CH_4: Own
+    CH_5: Own
+    CH_6: Own
+    CH_7: Own
+
+ipct_global_ch_secure:
+  - CH_2: NonSecure
+    CH_3: NonSecure
+  - CH_6: NonSecure
+    CH_7: NonSecure
+
+ipct_global_interrupt_own:
+  - INT_0: Own
+  - INT_0: Own
+
+ipct_global_interrupt_secure:
+  - INT_0: NonSecure
+
+
+###################################
+# DPPI (Global)
+###################################
+
+dppi_global_ch_own:
+  - NotOwn
+  - CH_0: Own
+  - NotOwn
+  - NotOwn
+  - CH_0: Own
+  - NotOwn
+  - NotOwn
+  - CH_0: Own
+
+dppi_global_ch_secure:
+  - Secure
+  - Secure
+  - Secure
+  - Secure
+  - Secure
+  - Secure
+  - Secure
+  - Secure
+
+dppi_global_ch_link_source:
+  - NotLinked
+  - NotLinked
+  - NotLinked
+  - NotLinked
+  - CH_0: Linked
+  - NotLinked
+  - NotLinked
+  - NotLinked
+
+dppi_global_ch_link_sink:
+  - NotLinked
+  - CH_0: Linked
+  - NotLinked
+  - NotLinked
+  - NotLinked
+  - NotLinked
+  - NotLinked
+  - CH_0: Linked
+
+dppi_global_chg_own:
+  - NotOwn
+  - NotOwn
+  - NotOwn
+  - NotOwn
+  - CHG_0: Own
+    CHG_1: Own
+  - NotOwn
+  - NotOwn
+  - NotOwn
+
+dppi_global_chg_secure:
+  - Secure
+  - Secure
+  - Secure
+  - Secure
+  - CHG_0: NonSecure
+  - Secure
+  - Secure
+  - Secure
+
+
+#####################################
+# Vector Table Offset Register (VTOR)
+#####################################
+
+initsvtor: 0x1E054000
+
+initnsvtor: 0x0E054000

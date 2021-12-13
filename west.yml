@@ -1,0 +1,44 @@
+# Copyright (c) 2021 Nordic Semiconductor ASA. All Rights Reserved.
+# The information contained herein is confidential property of Nordic Semiconductor ASA.
+# The use, copying, transfer or disclosure of such information is prohibited except by
+# express written agreement with Nordic Semiconductor ASA.
+#
+# The per-workspace west configuration file, radio_driver/.west/config,
+# specifies the location of this manifest file like this:
+#
+#     [manifest]
+#     path = apps
+#
+# See the west documentation for more information:
+#
+# https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/zephyr/guides/west/index.html
+
+manifest:
+  # This west.yml requires west 0.10 or later, because the "group-filter"
+  # feature used below was introduced then.
+  version: "0.10"
+
+  # "remotes" is a list of locations where git repositories are cloned
+  # and fetched from.
+  remotes:
+    # KRKNWK (Networks group) project repositories.
+    # NCS is hosted here
+    - name: nrfconnect
+      url-base: https://github.com/nrfconnect
+
+  # If not otherwise specified, the projects below should be obtained
+  # from the krknwk remote.
+  defaults:
+    remote: nrfconnect
+
+  # group filter to remove project out of scope
+
+  # "projects" is a list of git repositories which make up the NCS
+  # source code.
+  projects:
+    - name: ncs
+      repo-path: sdk-nrf-next
+      revision: haltium-zephyr
+      path: nrf
+      import:
+        path-prefix: ncs

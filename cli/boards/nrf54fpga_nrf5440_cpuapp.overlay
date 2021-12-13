@@ -1,0 +1,24 @@
+/*
+ * Copyright (c) 2021 Nordic Semiconductor ASA
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/ {
+	chosen {
+		zephyr,ipc_shm = &gram00;
+		zephyr,ipc = &bellboard0;
+		zephyr,console = &uart136;
+		zephyr,shell-uart = &uart136;
+		zephyr,sram = &gram01;
+	};
+};
+
+&uart136 {
+	status = "okay";
+	current-speed = <19200>;
+};
+
+&bellboard0 {
+	status = "okay";
+};
