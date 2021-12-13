@@ -3,3 +3,5 @@ manifest-tmp
 ncs
 build
 ve
+dist
+per_hex_gen.egg-info/
