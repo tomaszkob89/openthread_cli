@@ -44,3 +44,6 @@ manifest:
       path: nrf
       import:
         path-prefix: ncs
+
+  self:
+      path: .
