@@ -43,8 +43,7 @@ manifest:
       remote: lmaciejonczyk
       revision: per_hex_gen 
       path: nrf
-      import:
-        path-prefix: ncs
+      import: true
 
   self:
       path: cli
